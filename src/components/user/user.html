@@ -1,0 +1,20 @@
+<!-- Generated template for the UserComponent component -->
+<div>
+  {{text}}
+</div>
+
+<div class="parent_div">
+  <p>父组件</p>
+  <div>
+    <input type="button" value="调用子组件方法" (click)="changeClick()">
+  </div>
+  <!---子组件指令 start-->
+  <h2>Parent:{{i}}</h2>
+  <h2>Parent[text]:{{text}}</h2>
+  <user-info #UserInfoComponent [content]="i" [userObject]='userXXX' (changeNumber)="numberIChange($event)">
+  </user-info>
+  <!---子组件指令 end-->
+  <br/>
+  
+
+</div>

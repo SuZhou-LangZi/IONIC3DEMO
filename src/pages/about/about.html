@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ul>
+    <li *ngFor="let item of list;let i = index;">
+      【{{i}}】{{item.ItemName}}
+    </li>
+  </ul>
+
+  <button (click)="goToUserInfo()">点击跳转</button>
+  <button (click)="getUserInfo()">獲取數據</button>
+  <button (click)="getService()">获取后台数据</button>
+
+  <ul>
+    <li *ngFor="let item of list;let i = index;">
+      【{{i}}】{{item.ItemName}}
+    </li>
+  </ul>
+
+  <button (click)="onSave($event)">Save</button>
+  <button *ngFor="let hero of heroes" (click)="deleteHero(hero)">{{hero.name}}</button>
+
+
+
+  <div class="panel panel-warning">
+
+    <div class="panel-heading">
+      <div class="panel-title">模板引用变量2-表单</div>
+    </div>
+    <div class="panel-body">
+      <form (ngSubmit)="onSubmit(stuForm)" #stuForm="ngForm">
+        <div class="form-group">
+          <label for="name">姓名：</label>
+          <input type="text" name="name" required [(ngModel)]="stu.userName" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="age">编号：</label>
+          <input type="number" name="userID" [(ngModel)]="stu.userID" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="age">年龄：</label>
+          <input type="number" name="age" required [(ngModel)]="stu.age" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="age">XXX：</label>
+          <input type="number" name="xxx" required [(ngModel)]="stu.xxx" class="form-control">
+        </div>
+        <button *ngIf="!issubmit" class="btn btn-success" type="submit" [disabled]="!stuForm.form.valid">确定提交</button>
+        <button *ngIf='issubmit' type="submit" disabled class="btn btn-success">正在提交...</button>
+      </form>
+      <div class="alert alert-info">
+        表单对象:{{stu|json}}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="panel-title">模板引用变量1</div>
+    </div>
+    <div class="panel-body">
+      <input type="text" name="phone" placeholder="请输入手机号" class="form-control" #phone (blur)="showOne(phone.value);">
+      <span class="lable lable-primary">{{phone.value}}</span>
+
+      <div>Title through uppercase pipe: {{phone.value | uppercase}}</div>
+
+      <div>{{phone.value | json}}</div>
+      <div>{{phone?.value}}</div>
+      <div>{{phone!.value}}</div>
+
+      <div>
+        Undeclared members is {{$any(phone).memberX}}
+      </div>
+
+    </div>
+  </div>
+
+  <user></user>
+
+
+</ion-content>
